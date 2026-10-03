@@ -10,6 +10,7 @@
         content="RWA Alert पर सरकारी नौकरी, परीक्षा, रिजल्ट, एडमिट कार्ड, स्कॉलरशिप और महत्वपूर्ण नोटिस की जानकारी पाएं।">
 
   <style>
+
     * {
       margin: 0;
       padding: 0;
@@ -17,13 +18,13 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
+      font-family: Arial, "Noto Sans Devanagari", sans-serif;
       background: #f4f7fb;
       color: #1f2937;
     }
 
     .header {
-      background: #ffffff;
+      background: white;
       border-bottom: 1px solid #e5e7eb;
       position: sticky;
       top: 0;
@@ -35,6 +36,7 @@
       margin: auto;
       min-height: 70px;
       padding: 0 20px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -43,7 +45,6 @@
     .logo {
       font-size: 25px;
       font-weight: 800;
-      color: #111827;
     }
 
     .logo span {
@@ -78,14 +79,15 @@
     }
 
     .hero p {
-      font-size: 17px;
       max-width: 700px;
       margin: auto;
+      font-size: 17px;
     }
 
     .search {
       max-width: 650px;
       margin: 30px auto 0;
+
       display: flex;
       background: white;
       padding: 5px;
@@ -134,12 +136,6 @@
       text-align: center;
       font-weight: 700;
       cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .category:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     }
 
     .icon {
@@ -159,6 +155,12 @@
       border: 1px solid #e5e7eb;
       border-radius: 14px;
       padding: 22px;
+      transition: 0.2s;
+    }
+
+    .post:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
     }
 
     .badge {
@@ -182,12 +184,37 @@
       font-size: 14px;
     }
 
-    .read {
-      display: inline-block;
+    .post-date {
+      display: block;
+      margin-top: 15px;
+      color: #6b7280;
+      font-size: 12px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 8px;
       margin-top: 18px;
-      color: #2563eb;
+    }
+
+    .buttons a {
+      flex: 1;
+      text-align: center;
       text-decoration: none;
+      padding: 9px;
+      border-radius: 6px;
+      font-size: 13px;
       font-weight: 700;
+    }
+
+    .official {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .apply {
+      background: #2563eb;
+      color: white;
     }
 
     .notice {
@@ -223,6 +250,7 @@
     }
 
     @media (max-width: 900px) {
+
       .categories {
         grid-template-columns: repeat(3, 1fr);
       }
@@ -230,9 +258,11 @@
       .posts {
         grid-template-columns: repeat(2, 1fr);
       }
+
     }
 
     @media (max-width: 600px) {
+
       .menu {
         display: none;
       }
@@ -257,13 +287,20 @@
       .posts {
         grid-template-columns: 1fr;
       }
+
+      .buttons {
+        flex-direction: column;
+      }
+
     }
+
   </style>
 </head>
 
 <body>
 
 <header class="header">
+
   <div class="nav">
 
     <div class="logo">
@@ -271,20 +308,25 @@
     </div>
 
     <div class="menu">
+
       <a href="#">Home</a>
       <a href="#jobs">Jobs</a>
       <a href="#admit">Admit Card</a>
       <a href="#result">Result</a>
       <a href="#notice">Notice</a>
+
     </div>
 
   </div>
+
 </header>
 
 
 <section class="hero">
 
-  <h1>Latest Jobs, Exams & Notices</h1>
+  <h1>
+    Latest Jobs, Exams & Notices
+  </h1>
 
   <p>
     सरकारी नौकरी, परीक्षा, रिजल्ट, एडमिट कार्ड,
@@ -294,9 +336,10 @@
   <div class="search">
 
     <input
-      type="text"
       id="searchInput"
+      type="text"
       placeholder="🔎 Job या Notice खोजें..."
+      onkeyup="searchPosts()"
     >
 
     <button onclick="searchPosts()">
@@ -310,7 +353,9 @@
 
 <section class="container">
 
-  <h2 class="title">📂 Categories</h2>
+  <h2 class="title">
+    📂 Categories
+  </h2>
 
   <div class="categories">
 
@@ -351,74 +396,18 @@
 
 <section class="container" id="jobs">
 
-  <h2 class="title">🔥 Latest Updates</h2>
+  <h2 class="title">
+    🔥 Latest Updates
+  </h2>
 
-  <div class="posts" id="postsContainer">
+  <div
+    class="posts"
+    id="postsContainer"
+  >
 
-    <article class="post">
-
-      <span class="badge">
-        Government Job
-      </span>
-
-      <h3>
-        Latest Government Job Recruitment 2026
-      </h3>
-
-      <p>
-        नई सरकारी भर्ती से संबंधित महत्वपूर्ण जानकारी,
-        आवेदन तिथि और जरूरी लिंक यहां देखें।
-      </p>
-
-      <a class="read" href="#">
-        पूरी जानकारी →
-      </a>
-
-    </article>
-
-
-    <article class="post">
-
-      <span class="badge">
-        Admit Card
-      </span>
-
-      <h3>
-        Latest Exam Admit Card 2026
-      </h3>
-
-      <p>
-        नवीनतम परीक्षा के एडमिट कार्ड और डाउनलोड
-        संबंधित जानकारी यहां देखें।
-      </p>
-
-      <a class="read" href="#">
-        पूरी जानकारी →
-      </a>
-
-    </article>
-
-
-    <article class="post">
-
-      <span class="badge">
-        Result
-      </span>
-
-      <h3>
-        Latest Exam Result 2026
-      </h3>
-
-      <p>
-        परीक्षा परिणाम और महत्वपूर्ण आधिकारिक
-        लिंक की जानकारी यहां देखें।
-      </p>
-
-      <a class="read" href="#">
-        पूरी जानकारी →
-      </a>
-
-    </article>
+    <p>
+      Updates loading...
+    </p>
 
   </div>
 
@@ -433,19 +422,12 @@
       📢 Important Notice Board
     </h2>
 
-    <div class="notice-item">
-      <span class="new">NEW</span>
-      Latest Government Notice 2026
-    </div>
+    <div id="noticeContainer">
 
-    <div class="notice-item">
-      <span class="new">NEW</span>
-      Latest Exam Date Update
-    </div>
+      <p>
+        Notice loading...
+      </p>
 
-    <div class="notice-item">
-      <span class="new">NEW</span>
-      Scholarship Important Notice
     </div>
 
   </div>
@@ -455,7 +437,9 @@
 
 <footer>
 
-  <h2>RWA ALERT</h2>
+  <h2>
+    RWA ALERT
+  </h2>
 
   <p>
     Jobs • Exams • Results • Admit Card • Notices
@@ -470,31 +454,174 @@
 
 <script>
 
+let allPosts = [];
+
+
+async function loadPosts() {
+
+  try {
+
+    const response =
+      await fetch("posts.json?time=" + Date.now());
+
+    if (!response.ok) {
+      throw new Error("Posts file not found");
+    }
+
+    allPosts = await response.json();
+
+    displayPosts(allPosts);
+
+  }
+
+  catch (error) {
+
+    document.getElementById("postsContainer").innerHTML =
+
+      "<p>Posts load नहीं हो सके। थोड़ी देर बाद फिर कोशिश करें।</p>";
+
+    console.error(error);
+
+  }
+
+}
+
+
+function displayPosts(posts) {
+
+  const container =
+    document.getElementById("postsContainer");
+
+  container.innerHTML = "";
+
+
+  if (posts.length === 0) {
+
+    container.innerHTML =
+      "<p>अभी कोई update उपलब्ध नहीं है।</p>";
+
+    return;
+
+  }
+
+
+  posts
+    .slice()
+    .reverse()
+    .forEach(function(post) {
+
+      const article =
+        document.createElement("article");
+
+      article.className = "post";
+
+
+      let buttons = "";
+
+
+      if (post.officialLink) {
+
+        buttons +=
+
+          `<a
+             class="official"
+             href="${post.officialLink}"
+             target="_blank"
+             rel="noopener"
+           >
+             Official
+           </a>`;
+
+      }
+
+
+      if (post.applyLink) {
+
+        buttons +=
+
+          `<a
+             class="apply"
+             href="${post.applyLink}"
+             target="_blank"
+             rel="noopener"
+           >
+             Apply Online
+           </a>`;
+
+      }
+
+
+      article.innerHTML =
+
+        `<span class="badge">
+           ${post.category || "Update"}
+         </span>
+
+         <h3>
+           ${post.title}
+         </h3>
+
+         <p>
+           ${post.description || ""}
+         </p>
+
+         <span class="post-date">
+           📅 ${post.date || ""}
+         </span>
+
+         ${
+           buttons
+           ? `<div class="buttons">${buttons}</div>`
+           : ""
+         }`;
+
+
+      container.appendChild(article);
+
+    });
+
+}
+
+
 function searchPosts() {
 
-  const search =
+  const query =
+
     document
       .getElementById("searchInput")
       .value
-      .toLowerCase();
+      .toLowerCase()
+      .trim();
 
-  const posts =
-    document.querySelectorAll(".post");
 
-  posts.forEach(function(post) {
+  const filtered =
 
-    const text =
-      post.innerText.toLowerCase();
+    allPosts.filter(function(post) {
 
-    if (text.includes(search)) {
-      post.style.display = "";
-    } else {
-      post.style.display = "none";
-    }
+      const text =
 
-  });
+        (
+          post.title +
+          " " +
+          post.category +
+          " " +
+          post.description +
+          " " +
+          post.content
+        ).toLowerCase();
+
+
+      return text.includes(query);
+
+    });
+
+
+  displayPosts(filtered);
 
 }
+
+
+loadPosts();
 
 </script>
 
