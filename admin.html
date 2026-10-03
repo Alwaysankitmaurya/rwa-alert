@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>RWA Alert - Admin Panel</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, "Noto Sans Devanagari", sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+    }
+
+    .topbar {
+      background: #111827;
+      color: white;
+      padding: 18px 20px;
+    }
+
+    .topbar-inner {
+      max-width: 1000px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: #60a5fa;
+    }
+
+    .admin-text {
+      font-size: 14px;
+      color: #d1d5db;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 900px;
+      margin: 35px auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 30px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.06);
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #6b7280;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      outline: none;
+      font-size: 15px;
+      font-family: inherit;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #2563eb;
+    }
+
+    textarea {
+      min-height: 220px;
+      resize: vertical;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .publish-btn {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .publish-btn:hover {
+      background: #1d4ed8;
+    }
+
+    .preview {
+      margin-top: 30px;
+      padding: 20px;
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .preview h2 {
+      margin-bottom: 10px;
+    }
+
+    .success {
+      display: none;
+      margin-bottom: 20px;
+      padding: 12px;
+      background: #dcfce7;
+      color: #166534;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #2563eb;
+      font-weight: 700;
+    }
+
+    @media (max-width: 600px) {
+
+      .card {
+        padding: 20px;
+      }
+
+      .row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+
+    <div class="topbar-inner">
+
+      <div class="logo">
+        <span>RWA</span> ALERT
+      </div>
+
+      <div class="admin-text">
+        Admin Panel
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <main class="container">
+
+    <div class="card">
+
+      <h1>➕ New Post</h1>
+
+      <p class="subtitle">
+        नई Job, Exam, Result या Notice की जानकारी प्रकाशित करें।
+      </p>
+
+
+      <div id="successMessage" class="success">
+        ✅ Post तैयार हो गई है।
+      </div>
+
+
+      <form id="postForm">
+
+
+        <!-- TITLE -->
+
+        <div class="form-group">
+
+          <label for="title">
+            Post Title *
+          </label>
+
+          <input
+            type="text"
+            id="title"
+            placeholder="जैसे: UP Police Constable Recruitment 2026"
+            required
+          >
+
+        </div>
+
+
+        <!-- CATEGORY + DATE -->
+
+        <div class="row">
+
+          <div class="form-group">
+
+            <label for="category">
+              Category *
+            </label>
+
+            <select id="category" required>
+
+              <option value="">
+                Select Category
+              </option>
+
+              <option value="Government Jobs">
+                Government Jobs
+              </option>
+
+              <option value="Private Jobs">
+                Private Jobs
+              </option>
+
+              <option value="Admit Card">
+                Admit Card
+              </option>
+
+              <option value="Result">
+                Result
+              </option>
+
+              <option value="Exam">
+                Exam
+              </option>
+
+              <option value="Scholarship">
+                Scholarship
+              </option>
+
+              <option value="Important Notice">
+                Important Notice
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="postDate">
+              Post Date
+            </label>
+
+            <input
+              type="date"
+              id="postDate"
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- SHORT DESCRIPTION -->
+
+        <div class="form-group">
+
+          <label for="shortDescription">
+            Short Description
+          </label>
+
+          <input
+            type="text"
+            id="shortDescription"
+            placeholder="इस अपडेट के बारे में छोटी जानकारी"
+          >
+
+        </div>
+
+
+        <!-- CONTENT -->
+
+        <div class="form-group">
+
+          <label for="content">
+            Full Post Content *
+          </label>
+
+          <textarea
+            id="content"
+            placeholder="यहाँ WhatsApp से मिली जानकारी को paste करें..."
+            required
+          ></textarea>
+
+        </div>
+
+
+        <!-- IMPORTANT DATES -->
+
+        <div class="form-group">
+
+          <label for="importantDate">
+            Important Date / Last Date
+          </label>
+
+          <input
+            type="text"
+            id="importantDate"
+            placeholder="जैसे: आवेदन की अंतिम तिथि - 30 अक्टूबर 2026"
+          >
+
+        </div>
+
+
+        <!-- OFFICIAL LINK -->
+
+        <div class="form-group">
+
+          <label for="officialLink">
+            Official Notification / Website Link
+          </label>
+
+          <input
+            type="url"
+            id="officialLink"
+            placeholder="https://example.com"
+          >
+
+        </div>
+
+
+        <!-- APPLY LINK -->
+
+        <div class="form-group">
+
+          <label for="applyLink">
+            Apply Online Link
+          </label>
+
+          <input
+            type="url"
+            id="applyLink"
+            placeholder="https://example.com/apply"
+          >
+
+        </div>
+
+
+        <!-- PUBLISH -->
+
+        <button
+          type="submit"
+          class="publish-btn"
+        >
+          🚀 Publish Post
+        </button>
+
+      </form>
+
+
+      <!-- PREVIEW -->
+
+      <div id="preview" class="preview">
+
+        <h2 id="previewTitle"></h2>
+
+        <p id="previewCategory"></p>
+
+        <hr style="margin:15px 0;">
+
+        <p id="previewContent"></p>
+
+      </div>
+
+
+      <a href="index.html" class="back">
+        ← वापस Website पर जाएँ
+      </a>
+
+    </div>
+
+  </main>
+
+
+  <script>
+
+    const form =
+      document.getElementById("postForm");
+
+    form.addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+      const title =
+        document.getElementById("title").value;
+
+      const category =
+        document.getElementById("category").value;
+
+      const content =
+        document.getElementById("content").value;
+
+      document.getElementById("previewTitle")
+        .textContent = title;
+
+      document.getElementById("previewCategory")
+        .textContent = "Category: " + category;
+
+      document.getElementById("previewContent")
+        .textContent = content;
+
+      document.getElementById("preview")
+        .style.display = "block";
+
+      document.getElementById("successMessage")
+        .style.display = "block";
+
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
